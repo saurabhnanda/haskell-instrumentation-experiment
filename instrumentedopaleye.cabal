@@ -1,0 +1,44 @@
+name:                instrumentedopaleye
+version:             0.1.0.0
+synopsis:            Initial project template from stack
+description:         Please see README.md
+homepage:            https://github.com/githubuser/dashboard#readme
+license:             BSD3
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2016 Author name here
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     InstrumentedOpaleye
+                     , Instrumented
+                     , InstrumentedOpaleye.Internal.PGTypes
+                     , InstrumentedOpaleye.Internal.Column
+                     , InstrumentedOpaleye.Internal.RunQuery
+                     , InstrumentedOpaleye.Internal.HaskellDB.PrimQuery
+                     , InstrumentedLucid
+                     , Web.Scotty
+                     , Web.Scotty.Trans
+                     , InstrumentedCore
+  build-depends:       base >= 4.7 && < 5
+                     , opaleye
+                     , profunctors
+                     , product-profunctors
+                     , postgresql-simple
+                     , mtl
+                     , time
+                     , stm
+                     , text
+                     , uuid
+                     , lucid
+                     , scotty
+                     , transformers
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/githubuser/dashboard
