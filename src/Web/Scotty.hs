@@ -4,36 +4,6 @@
 module Web.Scotty
   (
     module OS
-  , get
-  , post
-  , put
-  , delete
-  , patch
-  , options
-  , addroute
   ) where
+import qualified "scotty" Web.Scotty as OS
 
-import qualified "scotty" Web.Scotty as OS hiding (get, post, put, delete, patch, options, addroute)
-import qualified "scotty" Web.Scotty as S
-
-import InstrumentedCore
-import Control.Monad.Trans.Class(lift)
-
--- instrumentedAction :: S.ActionM () -> S.ScottyM ()
-instrumentedAction original action = original action_
-  where
-    action_ = do
-      st <- liftIO $ getCurrentTime
-      result <- action
-      en <- liftIO $ getCurrentTime
-      -- lift $ logInstrumentationData InstrumentationData{instrStart=st, instrEnd=en, instrPayload=Render}
-      return result
-
-
-get route action = instrumentedAction (S.get route) action
-post route action = instrumentedAction (S.post route) action
-put route action = instrumentedAction (S.put route) action
-delete route action = instrumentedAction (S.delete route) action
-patch route action = instrumentedAction (S.patch route) action
-options route action = instrumentedAction (S.options route) action
-addroute method route action = instrumentedAction (S.addroute method route) action
